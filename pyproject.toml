@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uob-sharepoint-scraper"
+version = "0.0.0"
+description = "UoB SharePoint scraper"
+authors = [{name = "yi liu"}]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4",
+    "pydash",
+    "playwright",
+    "pydantic",
+    "pandas",
+    "python-slugify",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ty",
+    "ruff",
+    "jupyterlab",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ty",
+    "ruff",
+    "jupyterlab",
+    "pytest>=8.4.1",
+]
+
+[tool.ruff]
+line-length = 79
+indent-width = 4
+
+[tool.ruff.lint]
+ignore = ["E501", "D103"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scraper"]
